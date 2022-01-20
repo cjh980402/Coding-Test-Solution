@@ -1,40 +1,42 @@
 #include <string>
 #include <vector>
-#include <map>
-#include <set>
+#include <algorithm>
 
 using namespace std;
 
-// 같은 내용의 티켓이 있을 수 있으므로 multiset 사용
-vector<string> dfs(map<string, multiset<string>> ticket_graph, vector<string> path, const string &prev, const string &now)
+// 보다 최적화된 코드로 업데이트 완료
+vector<string> dfs(vector<bool> &used, const vector<vector<string>> &tickets, const string &now, vector<string> answer)
 {
-    // erase(value)를 사용시 해당하는 값을 모두 지우므로 1개만 지우기 위해 이터레이터를 사용
-    ticket_graph[prev].erase(ticket_graph[prev].find(now));
-    path.push_back(now);
-    vector<string> maxPath = path;
+    vector<string> maxAns = answer;
 
-    for (const string &s : ticket_graph[now])
+    for (int i = 0; i < tickets.size(); i++)
     {
-        vector<string> temp = dfs(ticket_graph, path, now, s);
-        if (maxPath.size() < temp.size())
-            maxPath = temp;
+        if (used[i] || tickets[i][0] != now)
+            continue;
+
+        // 티켓 사용 표시
+        used[i] = true;
+        // 경로에 추가
+        answer.push_back(tickets[i][1]);
+        vector<string> temp = dfs(used, tickets, tickets[i][1], answer);
+        // 길이가 긴 경로는 모든 티켓을 사용한 경우이므로 값을 갱신
+        if (maxAns.size() < temp.size())
+            maxAns = temp;
+        // 티켓 사용 제거
+        used[i] = false;
+        // 경로에서 제거
+        answer.pop_back();
     }
 
-    return maxPath;
+    return maxAns;
 }
 
 vector<string> solution(vector<vector<string>> tickets)
 {
-    vector<string> answer;
-    map<string, multiset<string>> ticket_graph; // 중복 허용을 위한 multiset 사용
+    vector<bool> used(tickets.size(), false);
 
-    for (const vector<string> &t : tickets)
-    {
-        ticket_graph[t[0]].insert(t[1]);
-    }
-    ticket_graph["HEAD"].insert("ICN");
+    // 알파벳 순서 조건을 만족하기 위해 티켓배열을 오름차순으로 정렬
+    sort(tickets.begin(), tickets.end());
 
-    answer = dfs(ticket_graph, answer, "HEAD", "ICN");
-
-    return answer;
+    return dfs(used, tickets, "ICN", {"ICN"});
 }
