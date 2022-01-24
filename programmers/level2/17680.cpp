@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <utility>
 #include <algorithm>
 
@@ -10,7 +10,7 @@ int solution(int cacheSize, vector<string> cities)
 {
     int answer = 0;
     vector<pair<string, int>> lru;
-    map<string, bool> cache;
+    unordered_map<string, bool> cache;
 
     for (int i = 0; i < cities.size(); i++)
     {

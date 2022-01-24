@@ -1,13 +1,13 @@
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
 int solution(vector<vector<string>> clothes)
 {
     int answer = 1;
-    map<string, int> clmap;
+    unordered_map<string, int> clmap;
 
     for (const vector<string> &v : clothes)
     {

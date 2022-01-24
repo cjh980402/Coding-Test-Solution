@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <sstream>
 
 using namespace std;
@@ -9,7 +9,7 @@ vector<string> solution(vector<string> record)
 {
     vector<string> answer;
     vector<vector<string>> split_record;
-    map<string, string> nickList;
+    unordered_map<string, string> nickList;
 
     for (const string &r : record)
     {

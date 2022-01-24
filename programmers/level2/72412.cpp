@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include <map>
+#include <unordered_map>
 #include <algorithm>
 
 using namespace std;
@@ -9,7 +9,7 @@ using namespace std;
 vector<int> solution(vector<string> info, vector<string> query)
 {
     vector<int> answer(query.size());
-    map<string, vector<int>> all_kind_info;
+    unordered_map<string, vector<int>> all_kind_info;
 
     for (int i = 0; i < info.size(); i++)
     {

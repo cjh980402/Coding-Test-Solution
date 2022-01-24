@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <utility>
 #include <algorithm>
 
@@ -9,7 +9,7 @@ using namespace std;
 vector<string> solution(vector<string> orders, vector<int> course)
 {
     vector<string> answer;
-    map<int, pair<map<string, int>, int>> menu;
+    unordered_map<int, pair<unordered_map<string, int>, int>> menu;
 
     for (string &s : orders)
     {

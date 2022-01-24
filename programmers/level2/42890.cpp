@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 
@@ -12,7 +12,7 @@ int solution(vector<vector<string>> relation)
 
     for (int i = 1; i < range; i++)
     {
-        set<string> cache;
+        unordered_set<string> cache;
         for (const vector<string> &r : relation)
         {
             string key;

@@ -1,11 +1,11 @@
 #include <string>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 
-multiset<string> stringSet(string str)
+unordered_multiset<string> stringSet(string str)
 {
-    multiset<string> v;
+    unordered_multiset<string> v;
 
     for (int i = 0; i < str.length() - 1; i++)
     {
@@ -22,10 +22,10 @@ multiset<string> stringSet(string str)
 
 int solution(string str1, string str2)
 {
-    multiset<string> A = stringSet(str1), B = stringSet(str2);
+    unordered_multiset<string> A = stringSet(str1), B = stringSet(str2);
     if (A.size() == 0 && B.size() == 0)
         return 65536;
-    multiset<string> interSet, unionSet(A), AnBc(A);
+    unordered_multiset<string> interSet, unionSet(A), AnBc(A);
 
     for (string s : B)
     {

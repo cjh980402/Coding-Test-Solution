@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -10,7 +10,7 @@ int solution(string skill, vector<string> skill_trees)
 
     for (const string &s : skill_trees)
     {
-        map<char, int> now_tree;
+        unordered_map<char, int> now_tree;
 
         for (int i = 0; i < s.length(); i++)
         {

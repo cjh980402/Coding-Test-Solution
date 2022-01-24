@@ -1,11 +1,11 @@
 #include <vector>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 
 int solution(int N, int number)
 {
-    set<int> len_num_map[9]; // 길이(0~8)에 해당하는 숫자를 모아둔 테이블
+    unordered_set<int> len_num_map[9]; // 길이(0~8)에 해당하는 숫자를 모아둔 테이블
 
     for (int i = 1, n = N; i < 9; i++, n = 10 * n + N)
     {

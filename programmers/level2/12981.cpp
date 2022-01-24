@@ -1,13 +1,13 @@
 #include <string>
 #include <vector>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 
 vector<int> solution(int n, vector<string> words)
 {
     vector<int> answer(2);
-    set<string> list;
+    unordered_set<string> list;
 
     list.insert(words[0]);
     for (int i = 1; i < words.size(); i++)

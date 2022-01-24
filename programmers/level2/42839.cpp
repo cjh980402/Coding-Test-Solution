@@ -1,6 +1,6 @@
 #include <string>
 #include <cmath>
-#include <map>
+#include <unordered_set>
 #include <algorithm>
 #include <cstdlib>
 
@@ -28,7 +28,7 @@ bool isPrime(int n)
 int solution(string numbers)
 {
     int answer = 0;
-    map<int, int> madeNum;
+    unordered_set<int> madeNum;
     int len = numbers.length();
 
     sort(numbers.begin(), numbers.end()); // next_permutation을 사용하기 전에 필수
@@ -37,15 +37,15 @@ int solution(string numbers)
     {
         for (int i = 0; i < len; i++)
         {
-            madeNum[atoi(numbers.c_str() + i)]++;
+            madeNum.insert(atoi(numbers.c_str() + i));
         }
         if (!next_permutation(numbers.begin(), numbers.end()))
             break;
     }
 
-    for (auto iter = madeNum.begin(); iter != madeNum.end(); iter++)
+    for (int i : madeNum)
     {
-        if (isPrime(iter->first))
+        if (isPrime(i))
             answer++;
     }
 

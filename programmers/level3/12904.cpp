@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -8,7 +8,7 @@ using namespace std;
 int solution(string s)
 {
     int answer = 1; // 팰린드롬의 길이는 최소 1이다. (1글자인 경우)
-    map<char, vector<int>> cmap;
+    unordered_map<char, vector<int>> cmap;
 
     for (int i = 0; i < s.length(); i++)
         cmap[s[i]].push_back(i); // 각 글자의 위치 저장
