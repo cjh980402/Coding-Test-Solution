@@ -21,8 +21,8 @@ vector<int> solution(vector<int> lottos, vector<int> win_nums)
         }
     }
 
-    answer.push_back(min(6, 7 - (zeroCount + winCount)));
-    answer.push_back(min(6, 7 - (winCount)));
+    answer.push_back(min(6, 7 - (zeroCount + winCount))); // 최고 순위는 0이 모두 당첨 숫자인 경우
+    answer.push_back(min(6, 7 - (winCount)));             // 최저 순위는 0이 모두 당첨 숫자가 아닌 경우
 
     return answer;
 }
