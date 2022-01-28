@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
-#include <map>
-#include <set>
+#include <unordered_map>
+#include <unordered_set>
 #include <sstream>
 
 using namespace std;
@@ -9,9 +9,9 @@ using namespace std;
 vector<int> solution(vector<string> id_list, vector<string> report, int k)
 {
     vector<int> answer(id_list.size());
-    map<string, vector<string>> rList;
-    map<string, int> rCount;
-    set<string> reports(report.begin(), report.end()); // 중복 신고 제거 목적
+    unordered_map<string, vector<string>> rList;
+    unordered_map<string, int> rCount;
+    unordered_set<string> reports(report.begin(), report.end()); // 중복 신고 제거 목적
 
     for (const string &r : reports)
     {

@@ -2,7 +2,7 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -19,10 +19,10 @@ int countDiff(const string &a, const string &b)
 
 int solution(string begin, string target, vector<string> words)
 {
-    map<string, vector<string>> diffmap;
+    unordered_map<string, vector<string>> diffmap;
     queue<pair<string, int>> bfsq;
     int len = words.size();
-    map<string, int> dist;
+    unordered_map<string, int> dist;
 
     // 시작 단어와 1글자만 다른 단어들 탐색
     for (const string &w : words)
