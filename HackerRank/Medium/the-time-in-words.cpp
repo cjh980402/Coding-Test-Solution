@@ -33,6 +33,7 @@ string minuteString(string mid, int m)
 
 string timeInWords(int h, int m)
 {
+    // 정각, 30분 이내, 나머지로 범위를 나눈 후 출력을 구분한다.
     if (m == 0)
     {
         string h_str = toENGString(h);

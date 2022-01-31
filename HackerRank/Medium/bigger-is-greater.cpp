@@ -14,7 +14,7 @@ string rtrim(const string &);
 
 string biggerIsGreater(string w)
 {
-    return next_permutation(w.begin(), w.end()) ? w : "no answer";
+    return next_permutation(w.begin(), w.end()) ? w : "no answer"; // 다음 순열이 존재하는 경우 해당 순열 반환
 }
 
 int main()
