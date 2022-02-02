@@ -22,7 +22,7 @@ vector<string> bomberMan(int n, vector<string> grid)
     int r = grid.size(), c = grid[0].size(), period;
     unordered_map<string, int> counts;
 
-    // 해당 전체는 n 전체에 대해 시뮬레이션 할 경우 시간초과 발생. 그렇지만 특정시점부터 패턴이 주기성을 가지므로 이를 이용하면 된다.
+    // 해당 문제는 n 전체에 대해 시뮬레이션 할 경우 시간초과 발생. 그렇지만 특정시점부터 패턴이 주기성을 가지므로 이를 이용하면 된다.
     for (int count = 1; count < n; count++)
     {
         if (isFull)
