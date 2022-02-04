@@ -15,7 +15,7 @@ vector<string> split(const string &);
 
 int twoPluses(vector<string> grid)
 {
-    int n = grid.size(), m = grid[0].size();
+    int n = grid.size(), m = grid[0].size(), answer = 0;
     vector<vector<int>> pluses;
 
     // 플러스로 사용 가능한 모든 곳의 정보를 저장한다.
@@ -25,7 +25,7 @@ int twoPluses(vector<string> grid)
         {
             if (grid[i][j] == 'G')
             {
-                // 겹치는 경우가 발생할 때, 플러스의 일부분만 사용해야 문제에서 요구하는 최대의 넓이를 얻을 수 있는 경우가 있기 때문에 0부터 최대길이까지 모두 저장한다.
+                // 겹치는 경우가 발생할 때, 플러스의 일부분만 사용해야 문제에서 요구하는 결과를 얻을 수 있는 경우가 있기 때문에 0부터 최대길이까지 모두 저장한다.
                 pluses.push_back({i, j, 0});
 
                 for (int k = 1; i - k >= 0 && j - k >= 0 && i + k < n && j + k < m; k++)
@@ -49,13 +49,10 @@ int twoPluses(vector<string> grid)
         }
     }
 
-    int answer = 0;
-    vector<int> first, second;
-
     // first와 second에 해당하는 모든 경우의 조합을 확인한다.
     for (int i = 0; i < pluses.size() - 1; i++)
     {
-        first = pluses[i];
+        const vector<int> &first = pluses[i];
         // first와 second가 겹치는지 확인하기 위해 first의 영역을 U로 표시한다.
         for (int k = -first[2]; k <= first[2]; k++)
         {
@@ -65,7 +62,7 @@ int twoPluses(vector<string> grid)
 
         for (int j = i + 1; j < pluses.size(); j++)
         {
-            second = pluses[j];
+            const vector<int> &second = pluses[j];
             bool isPossible = true;
             for (int k = -second[2]; isPossible && k <= second[2]; k++)
             {
