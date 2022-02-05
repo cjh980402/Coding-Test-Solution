@@ -27,8 +27,8 @@ int solution(int m, int n, vector<vector<int>> puddles)
             // 침수 지역이 아닌 경우 값 계산 수행
             if (land[i][j] != 0)
             {
-                int left = land[i - 1][j];
-                int up = land[i][j - 1];
+                int left = land[i][j - 1];
+                int up = land[i - 1][j];
                 land[i][j] = (left + up) % 1000000007;
             }
         }
