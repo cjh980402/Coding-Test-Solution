@@ -13,9 +13,9 @@ int solution(int m, int n, vector<vector<int>> city_map)
     for (int i = 1; i < m; i++)
         if (city_map[i][0] != 1)
             city[i][0].second = city[i - 1][0].second;
-    for (int j = 1; j < n; j++)
-        if (city_map[0][j] != 1)
-            city[0][j].first = city[0][j - 1].first;
+    for (int i = 1; i < n; i++)
+        if (city_map[0][i] != 1)
+            city[0][i].first = city[0][i - 1].first;
 
     // 바텀업 DP 방식
     for (int i = 1; i < m; i++)
