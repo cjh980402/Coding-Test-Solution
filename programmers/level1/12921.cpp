@@ -18,7 +18,7 @@ int solution(int n)
 
         answer++; // i는 소수임
 
-        // j가 i*i부터 시작하는 이유는 i*1부터 i*(i-1)까지는 이전의 i값들에서 계산되었기 때문이다.
+        // j가 i*i부터 시작하는 이유는 i*2부터 i*(i-1)까지는 이전의 i값들에서 계산되었기 때문이다.
         for (long long j = i * i; j <= n; j += i)
         {
             prime[j] = false; // j는 i의 배수이므로 소수가 아님
