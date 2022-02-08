@@ -18,7 +18,7 @@ int main()
     for (int i = 1; i < n; i++)
     {
         cin >> value;
-        // 기준값과 비교하여 작은 값은 minHeap, 그렇지 않은 값은 maxHeap에 넣는다.
+        // 기준값과 비교하여 큰 값은 minHeap, 그렇지 않은 값은 maxHeap에 넣는다.
         if (value > maxHeap.top())
         {
             minHeap.push(value); // O(logn)
@@ -29,6 +29,8 @@ int main()
         }
 
         // maxHeap과 minHeap의 크기의 균형을 맞춰야한다. 단, maxHeap은 기준을 포함하므로 원소를 1개 더 가질 수 있다.
+        // 원소의 개수가 홀수: maxHeap의 크기가 minHeap의 크기보다 1만큼 커야한다.
+        // 원소의 개수가 짝수: 두 힙의 크기가 같아야 한다.
         if (maxHeap.size() > minHeap.size() + 1)
         {
             minHeap.push(maxHeap.top()); // O(logn)
