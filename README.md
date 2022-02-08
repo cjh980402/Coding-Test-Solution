@@ -3,9 +3,11 @@
 
 ## programmers
 - https://programmers.co.kr
+    - 문제 링크: `https://programmers.co.kr/learn/courses/30/lessons/{문제번호}`
 
 ## HackerRank
 - https://www.hackerrank.com
+    - 문제 링크: `https://www.hackerrank.com/challenges/{문제이름}/problem`
 
 ## 코딩테스트 관련 내용 정리
 ### 사용언어
