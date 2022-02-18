@@ -2,6 +2,21 @@
 
 using namespace std;
 
+struct Profit
+{
+    long long value;
+    int pos;
+};
+
+class CompareProfit
+{
+public:
+    bool operator()(const Profit &t1, const Profit &t2)
+    {
+        return t1.value > t2.value;
+    }
+};
+
 /*
  * Complete the 'billboards' function below.
  *
@@ -10,23 +25,43 @@ using namespace std;
  *  1. INTEGER k
  *  2. INTEGER_ARRAY revenue
  */
-long long billboards(int k, vector<int> revenue)
+long long billboards(int k, const vector<int> &revenue)
 {
-    vector<vector<long long>> sum_list;
-    for (int i = 0; i <= revenue.size() - k; i++)
+    long long sum = accumulate(revenue.begin(), revenue.end(), 0LL);
+    int n = revenue.size();
+    if (k == n)
     {
-        long long sum = 0;
-        for (int j = i; j < i + k; j++)
-        {
-            sum += revenue[j];
-        }
-        sum_list.push_back({i, i + k - 1, sum});
+        // 최대 광고판의 길이가 n과 동일하면 전체를 광고에 포함할 수 있음
+        return sum;
     }
 
-    sort(sum_list.begin(), sum_list.end(), [](const vector<long long> &a, const vector<long long> &b)
-         { return a[2] > b[2]; });
+    priority_queue<Profit, vector<Profit>, CompareProfit> pq; // value가 작은 값이 앞에 있음
 
-    return sum_list[0][2];
+    for (int i = 0; i < n; i++)
+    {
+        if (i <= k)
+        {
+            pq.push({revenue[i], i});
+        }
+        else
+        {
+            Profit p = pq.top();
+            while (p.pos < i - (k + 1))
+            {
+                pq.pop();
+                p = pq.top();
+            }
+            pq.push({revenue[i] + p.value, i});
+        }
+    }
+
+    Profit p = pq.top();
+    while (p.pos < n - (k + 1))
+    {
+        pq.pop();
+        p = pq.top();
+    }
+    return sum - p.value;
 }
 
 int main()
