@@ -15,7 +15,7 @@ string solution(int n, int k, vector<string> cmd)
     // 연결리스트 이용하는 방법으로 다시 순회
 
     // n+2개 선언한 이유: 첫 원소의 이전값, 마지막 원소의 다음값까지 포함 목적
-    for (int i = 0; i < n + 1; i++)
+    for (int i = 0; i < n + 2; i++)
     {
         prev[i] = i - 1; // 이전 값
         next[i] = i + 1;
