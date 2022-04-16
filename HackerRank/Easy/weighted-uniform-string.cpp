@@ -22,19 +22,19 @@ vector<string> weightedUniformStrings(const string &s, const vector<int> &querie
     {
         if (before == c)
         {
-            sameCount++;
+            sameCount++; // 동일한 글자가 나온 경우 카운트 증가
         }
         else
         {
-            sameCount = 1;
+            sameCount = 1; // 다른 글자가 나온 경우 카운트 리셋
         }
-        scores.insert((c - 'a' + 1) * sameCount);
+        scores.insert((c - 'a' + 1) * sameCount); // 현재 글자에서의 점수 추가
         before = c;
     }
 
     for (int q : queries)
     {
-        answer.push_back(scores.find(q) == scores.end() ? "No" : "Yes");
+        answer.push_back(scores.find(q) == scores.end() ? "No" : "Yes"); // 점수의 존재 유무에 따라 값 결정
     }
 
     return answer;
